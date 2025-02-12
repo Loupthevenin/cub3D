@@ -6,7 +6,7 @@
 /*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:05:23 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/12 18:13:22 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/12 20:08:14 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ int			check_texture(t_config *config);
 int			check_colors(t_config *config);
 int			check_map(t_config *config);
 int			check_wall(char **map);
+void		parse_player_pos(t_config *config, char **map);
 
 #endif
