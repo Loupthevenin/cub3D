@@ -6,7 +6,7 @@
 /*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:05:23 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/11 14:54:02 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/12 09:44:00 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,14 @@ typedef struct s_config
 
 // Utils
 void		free_tab(void **tabs, int size, int is_null);
+int			ft_len_tab(char **tab);
+void		free_config(t_config *config);
 
 // Parsing
 void		init_config(t_config *config, const char *path);
 char		**read_file(const char *path);
+int			parse_texture_colors(t_config *config, char **file_content);
+int			check_texture(t_config *config);
+int			check_colors(t_config *config);
 
 #endif

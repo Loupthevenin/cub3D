@@ -6,7 +6,7 @@
 /*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:23:47 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/11 14:58:34 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/12 10:54:34 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	set_result(const char *path, char ***result)
 	int		fd;
 	int		i;
 	char	*line;
+	int		len;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
@@ -55,6 +56,9 @@ static void	set_result(const char *path, char ***result)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
+		len = ft_strlen(line);
+		if (len > 0 && line[len - 1] == '\n')
+			line[len - 1] = '\0';
 		(*result)[i++] = ft_strdup(line);
 		free(line);
 	}

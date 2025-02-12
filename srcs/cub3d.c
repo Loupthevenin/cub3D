@@ -6,7 +6,7 @@
 /*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:04:05 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/11 14:10:30 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:50:26 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int	main(int argc, char **argv, char **envp)
 		error_main("env error\n");
 	if (argc != 2)
 		error_main("./cub3D *.cub\n");
-	(void)argc;
-	(void)argv;
 	init_config(&config, argv[1]);
+	free_config(&config);
 	return (0);
 }
