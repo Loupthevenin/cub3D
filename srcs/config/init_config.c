@@ -6,7 +6,7 @@
 /*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:10:59 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/12 11:25:24 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/12 19:46:31 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ void	init_config(t_config *config, const char *path)
 	char	**file_content;
 	int		index_map;
 
-	// check le path pour prendre uniquement .cub
-	// check_path(path);
+	if (check_path(path))
+		exit(EXIT_FAILURE);
 	file_content = read_file(path);
 	if (!file_content)
 		exit(EXIT_FAILURE);
@@ -96,8 +96,10 @@ void	init_config(t_config *config, const char *path)
 	if (check_colors(config))
 		exit_config(config, file_content);
 	parse_map(config, file_content, index_map);
+	// a delete;
 	print_map(config->map);
-	/* if (check_map(config)) */
-	/* 	exit_config(config, file_content); */
+	if (check_map(config))
+		exit_config(config, file_content);
+	// get_player_pos(config);
 	free_tab((void **)file_content, 0, 1);
 }
