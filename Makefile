@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+         #
+#    By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/18 14:00:10 by ltheveni          #+#    #+#              #
-#    Updated: 2025/02/11 12:02:50 by ltheveni         ###   ########.fr        #
+#    Updated: 2025/02/13 12:53:32 by opdi-bia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SHELL = /bin/bash
 CC = gcc
 
 INCLUDE = -I includes
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra 
 LIBFLAGS = -L $(LIB_DIR) -lft
 RM = rm -rf
 DEBUG_FLAGS = -g3

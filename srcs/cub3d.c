@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:04:05 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/12 20:24:04 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:04:33 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static void	print_config(t_config config)
 	printf("  - West:  %s\n", config.texture_w);
 	printf("\nColors:\n");
 	printf("  - Floor:   RGB(%d, %d, %d)\n", config.floor_color.r,
-			config.floor_color.g, config.floor_color.b);
+		config.floor_color.g, config.floor_color.b);
 	printf("  - Ceiling: RGB(%d, %d, %d)\n", config.ceiling_color.r,
-			config.ceiling_color.g, config.ceiling_color.b);
+		config.ceiling_color.g, config.ceiling_color.b);
 	/* printf("\nMap Size: Width = %d, Height = %d\n", config.map_weight,
 			config.map_height); */
 	printf("\nPlayer Position:\n");
@@ -58,6 +58,7 @@ int	main(int argc, char **argv, char **envp)
 		error_main("./cub3D *.cub\n");
 	init_config(&config, argv[1]);
 	print_config(config);
+	set_window(&config);
 	free_config(&config);
 	return (0);
 }
