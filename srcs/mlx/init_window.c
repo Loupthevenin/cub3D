@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:59:52 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/13 13:02:38 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:09:51 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,43 +83,10 @@ static void	handle_error(t_game *game, char *error, int i)
 	exit(EXIT_FAILURE);
 }
 
-void	get_map_size(t_game *game)
-{
-	int	y;
-	int	max_width;
-	int	current_width;
-
-	y = 0;
-	max_width = 0;
-	while (game->config->map[y])
-	{
-		current_width = ft_strlen(game->config->map[y]);
-		if (current_width > max_width)
-			max_width = current_width;
-		y++;
-	}
-	game->config->map_width = max_width;
-	game->config->map_height = y;
-	game->mlx.tileswidth = (float)WIDTH / (float)game->config->map_width;
-	game->mlx.tilesheight = (float)HEIGHT / (float)game->config->map_height;
-}
-
-void	init(t_game *game)
-{
-	game->player.dir_x = -1;
-	game->player.dir_y = 0;
-	game->player.plane_x = 0;
-	game->player.plane_y = 0.66;
-	game->player.ray_dir_x = -1;
-	game->player.ray_dir_x = 0;
-	// game->config->time= 0;
-	// game->config->oldtime = 0;
-}
-
 void	set_window(t_config *config)
 {
 	t_game	game;
-
+	
 	game.config = config;
 	game.mlx.mlx = mlx_init();
 	if (!game.mlx.mlx)
@@ -131,7 +98,7 @@ void	set_window(t_config *config)
 	if (game.mlx.img == NULL)
 		handle_error(&game, "Error\nmlx image\n", 2);
 	game.mlx.addr = mlx_get_data_addr(game.mlx.img, &game.mlx.bits_per_pixel,
-			&game.mlx.line_length, &game.mlx.endian);
+		&game.mlx.line_length, &game.mlx.endian);
 	if (!game.mlx.addr)
 		handle_error(&game, "Error\nmlx addr\n", 3);
 	get_map_size(&game);

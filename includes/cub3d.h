@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:05:23 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/13 15:56:40 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/13 19:04:35 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@
 # include <stdlib.h>
 
 # define WIDTH 820
-# define HEIGHT 820
+# define HEIGHT 420
 
 # define GREEN_PIXEL 0xFF00
 # define RED_PIXEL 0xFF0000
 # define WHITE_PIXEL 0xFFFFFF
 # define BLACK_PIXEL 0x000000
+# define GRID_COLOR 0x808080
 
 typedef struct s_color
 {
@@ -61,6 +62,8 @@ typedef struct s_player
 	float		pos_y;
 	float		dir_x;
 	float		dir_y;
+	float		stepx;
+	float		stepy;
 	float		plane_x;
 	float		plane_y;
 	int			new_x;
@@ -69,6 +72,10 @@ typedef struct s_player
 	float		ray_y;
 	float		ray_dir_x;
 	float		ray_dir_y;
+	float		delta_dist_x;
+	float		delta_dist_y;
+	float		side_dist_x;
+	float		side_dist_y;
 }				t_player;
 
 typedef struct s_mlx
@@ -82,6 +89,11 @@ typedef struct s_mlx
 	char		*addr;
 	float		tileswidth;
 	float		tilesheight;
+	float		tilesize;
+	int			start_x;
+	int			start_y;
+	int			end_x;
+	int			end_y;
 }				t_mlx;
 
 typedef struct s_game
@@ -116,5 +128,9 @@ void			set_window(t_config *config);
 void			draw(t_game *game);
 void			move_player(t_game *game);
 void			set_ray(t_game *game);
+void			init(t_game *game);
+void			refresh_player(t_game *game, int x, int y);
+void			get_map_size(t_game *game);
+void			my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 
 #endif
