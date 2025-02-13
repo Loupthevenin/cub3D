@@ -6,7 +6,7 @@
 /*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:17:29 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/12 17:12:05 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:06:28 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ static int	check_char(char **map)
 
 int	check_map(t_config *config)
 {
+	if (!config->map[0])
+	{
+		ft_putstr_fd("Error\nNo map found\n", 2);
+		return (1);
+	}
 	if (check_char(config->map))
 		return (1);
 	if (check_wall(config->map))

@@ -6,7 +6,7 @@
 /*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:10:59 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/12 20:13:42 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:17:41 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ static void	set_default_values(t_config *config)
 	config->ceiling_color.r = -1;
 	config->ceiling_color.g = -1;
 	config->ceiling_color.b = -1;
+	config->texture_n = NULL;
+	config->texture_s = NULL;
+	config->texture_e = NULL;
+	config->texture_w = NULL;
 }
 
 void	init_config(t_config *config, const char *path)
@@ -88,5 +92,6 @@ void	init_config(t_config *config, const char *path)
 	if (check_map(config))
 		exit_config(config, file_content);
 	parse_player_pos(config, config->map);
+	parse_size_map(config, config->map);
 	free_tab((void **)file_content, 0, 1);
 }

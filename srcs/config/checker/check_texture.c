@@ -6,7 +6,7 @@
 /*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:43:33 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/12 10:55:53 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:19:08 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	check_texture_path(char *path)
 
 	if (!path)
 	{
-		ft_putstr_fd("Error\nInvalid texture path\n", 2);
+		ft_putstr_fd("Error\nMissing texture path\n", 2);
 		return (1);
 	}
 	fd = open(path, O_RDONLY);
