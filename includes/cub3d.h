@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:05:23 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/13 19:04:35 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:38:55 by opdibia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define WHITE_PIXEL 0xFFFFFF
 # define BLACK_PIXEL 0x000000
 # define GRID_COLOR 0x808080
+#define PI 3.14159
 
 typedef struct s_color
 {
@@ -66,8 +67,8 @@ typedef struct s_player
 	float		stepy;
 	float		plane_x;
 	float		plane_y;
-	int			new_x;
-	int			new_y;
+	float			new_x;
+	float			new_y;
 	float		ray_x;
 	float		ray_y;
 	float		ray_dir_x;
@@ -76,6 +77,7 @@ typedef struct s_player
 	float		delta_dist_y;
 	float		side_dist_x;
 	float		side_dist_y;
+	float camerax;
 }				t_player;
 
 typedef struct s_mlx

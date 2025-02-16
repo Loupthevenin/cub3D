@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:04 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/13 19:01:29 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:42:00 by opdibia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,99 +79,123 @@ void	draw_map(t_game *game)
 	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);
 }
 
-//draw_player()
-
-void	check_dir(t_game *game, t_player *player)
+void	check_dir(t_game *game, t_player *player, int mapx, int mapy)
 {
-	(void)game;
-
-	if(player->ray_dir_x < 0)//si P regarde a droite
+	if(player->ray_dir_x < 0)
 	{
 		player->stepx = -1;
-		player->side_dist_x = (player->pos_x - player->ray_x) * player->delta_dist_x;
+		player->side_dist_x = (player->pos_x - mapx ) * player->delta_dist_x;
 	}
 	else
 	{
 		player->stepx = 1;
-		player->side_dist_x = (player->ray_x + 1 - player->pos_x) * player->delta_dist_x;
+		player->side_dist_x = (mapx + 1.0 - player->pos_x) * player->delta_dist_x;
 	}
-	if(player->ray_dir_y < 0)//si P regarde en haut
+	if(player->ray_dir_y < 0)
 	{
 		player->stepy = -1;
-		player->side_dist_y = (player->pos_y - player->ray_y) * player->delta_dist_y;
+		player->side_dist_y = (player->pos_y - mapy ) * player->delta_dist_y;
 	}
 	else
 	{
 		player->stepy = 1;
-		player->side_dist_y = (player->ray_y + 1 - player->pos_y) * player->delta_dist_y;
+		player->side_dist_y = (mapy + 1.0 - player->pos_y) * player->delta_dist_y;
 	}
+	(void)game;
 }
 
-void	draw_line(t_game *game, t_player *player)
+void	draw_line(t_mlx *mlx, int x0, int y0, int x1, int y1)
 {
-	int x0 = player->pos_x * game->mlx.tilesize;
-	int y0 = player->pos_y * game->mlx.tilesize;
-	int x1 = player->ray_x * game->mlx.tilesize;
-	int y1 = player->ray_y * game->mlx.tilesize;
-	int y = y0;
+	int dx = abs(x1 - x0), dy = abs(y1 - y0);
+	int sx;
+	if(x0 < x1)
+		sx = 1;
+	else 
+		sx = -1;
 
-	int dx = x1 - x0;
-	int dy = y1 - y0;
-	int slope = 2 * dy;
-	int error = -dx;
-	int errorInc = -2 * dx;
-	for (int x = x0 ; x <= x1; ++x)
-	{
-		my_mlx_pixel_put(&game->mlx, x, y, GREEN_PIXEL);
-		error += slope;
-		if (error >= 0)
+    int sy;
+	if (y0 < y1) 
+		sy = 1;
+	else
+		sy = -1;
+    int err = dx - dy;
+	int e2;
+    while (1)
+    {
+        my_mlx_pixel_put(mlx, x0, y0, GREEN_PIXEL);
+        if (x0 == x1 && y0 == y1) 
+			break;
+        e2 = 2 * err;
+        if (e2 > -dy) 
 		{
-			y++;
-			error += errorInc;
+			err -= dy; 
+			x0 += sx; 
 		}
-	}
-	// mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);
+        if (e2 < dx) 
+		{ 
+			err += dx;
+			y0 += sy; 
+		}
+    }
 }
 
-
-void	draw_ray(t_game *game, t_player *player)
+void	cast_ray(t_game *game, t_player *player)
 {
-	int touch;
-	int side;
-
-	touch = 0;
-	player->side_dist_x = 0;
-	player->side_dist_y = 0;
-	side = 0;
-	game->player.ray_x = game->player.pos_x;
-	game->player.ray_y = game->player.pos_y;
-	while(touch == 0)
+	int x;
+	x = 0;
+	while(x < WIDTH)
 	{
-		check_dir(game, &game->player);
-		if(player->side_dist_x < player->side_dist_y)
+		int mapx;
+		int mapy;
+		int touch = 0;
+		mapx = (int)game->player.pos_x;
+		mapy = (int)game->player.pos_y;
+		player->camerax = 2 * x / game->mlx.tileswidth -1;
+		player->side_dist_x = 0;
+		player->side_dist_y = 0;
+		game->player.ray_dir_x = player->dir_x + player->plane_x * player->camerax;
+		game->player.ray_dir_y = player->dir_y + player->plane_y * player->camerax;
+		if(player->ray_dir_x == 0)
+			player->ray_dir_x = INFINITY;
+		if(player->ray_dir_y == 0)
+			player->ray_dir_y = INFINITY;
+		player->delta_dist_x = fabs(1/player->ray_dir_x);
+		player->delta_dist_y = fabs(1/player->ray_dir_y);
+		check_dir(game, &game->player, mapx, mapy);
+		while(touch == 0)
 		{
-			player->side_dist_x += player->delta_dist_x;
-			player->ray_x += player->stepx;
-			side = 0;
+			if(player->side_dist_x < player->side_dist_y)
+			{
+				player->side_dist_x += player->delta_dist_x;
+				mapx += player->stepx;
+			}
+			else
+			{
+				player->side_dist_y += player->delta_dist_y;
+				mapy += player->stepy;
+			}
+			if (game->config->map[mapy][mapx]) 
+				if (game->config->map[mapy][mapx] == '1') 
+					touch = 1;
 		}
-		else
-		{
-			player->side_dist_y += player->delta_dist_y;
-			player->ray_y += player->stepy;
-			side = 1;
-		}
-		if(game->config->map[(int)floor(player->ray_y)][(int)floor(player->ray_x)])
-			if(game->config->map[(int)floor(player->ray_y)][(int)floor(player->ray_x)] > 0)
-				touch = 1;		
+		int startX = (player->pos_x * game->mlx.tileswidth + game->mlx.tileswidth / 2);
+		int startY = (player->pos_y * game->mlx.tilesheight + game->mlx.tilesheight / 2);
+		int endX = (mapx * game->mlx.tileswidth) ;  
+		int endY = (mapy * game->mlx.tilesheight);
+		draw_line(&game->mlx, startX, startY, endX, endY);
+		x++;
 	}
-	draw_line(game, &game->player);
 	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);
-	(void)side;
+	
 }
 
 void	draw(t_game *game)
 {
 	draw_map(game);
-	draw_ray(game, &game->player);
+	cast_ray(game, &game->player);
 	
 }
+
+
+
+
