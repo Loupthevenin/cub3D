@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:05:23 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/16 20:38:55 by opdibia          ###   ########.fr       */
+/*   Updated: 2025/02/17 14:05:55 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define WHITE_PIXEL 0xFFFFFF
 # define BLACK_PIXEL 0x000000
 # define GRID_COLOR 0x808080
-#define PI 3.14159
+# define PI 3.14159
 
 typedef struct s_color
 {
@@ -67,8 +67,8 @@ typedef struct s_player
 	float		stepy;
 	float		plane_x;
 	float		plane_y;
-	float			new_x;
-	float			new_y;
+	float		new_x;
+	float		new_y;
 	float		ray_x;
 	float		ray_y;
 	float		ray_dir_x;
@@ -77,7 +77,7 @@ typedef struct s_player
 	float		delta_dist_y;
 	float		side_dist_x;
 	float		side_dist_y;
-	float camerax;
+	float		camerax;
 }				t_player;
 
 typedef struct s_mlx
@@ -127,12 +127,15 @@ void			parse_size_map(t_config *config, char **map);
 
 // mlx
 void			set_window(t_config *config);
+int				close_window(t_game *game, int status);
 void			draw(t_game *game);
+void			draw_map(t_game *game);
 void			move_player(t_game *game);
-void			set_ray(t_game *game);
+void			cast_ray(t_game *game);
 void			init(t_game *game);
-void			refresh_player(t_game *game, int x, int y);
-void			get_map_size(t_game *game);
+void			get_tiles_size(t_game *game);
 void			my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+int				handle_key_press(int keycode, void *param);
+int				handle_key_release(int keycode, t_game *game);
 
 #endif

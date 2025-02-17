@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:41:58 by opdibia           #+#    #+#             */
-/*   Updated: 2025/02/16 18:43:52 by opdibia          ###   ########.fr       */
+/*   Updated: 2025/02/17 13:47:52 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,10 @@
 static void	set_value(t_game *game, int new_x, int new_y)
 {
 	game->config->map[new_y][new_x] = game->config->player_dir;
-	if((int)game->player.pos_x != new_x || (int)game->player.pos_y != new_y)
+	if ((int)game->player.pos_x != new_x || (int)game->player.pos_y != new_y)
 		game->config->map[(int)game->player.pos_y][(int)game->player.pos_x] = '0';
 	game->player.pos_x = new_x;
 	game->player.pos_y = new_y;
-	// game->player.ray_dir_x = game->player.dir_x;
-	// game->player.ray_dir_y = game->player.dir_x;
-	// game->player.ray_x = game->player.pos_x;
-	// game->player.ray_y = game->player.pos_y;
 }
 
 void	move_player(t_game *game)
