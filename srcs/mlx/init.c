@@ -6,21 +6,21 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:33:55 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/17 13:50:22 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:29:48 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	set_dir(t_game *game, t_player *player)
 {
-	if(game->config->player_dir == 'N' || game->config->player_dir == 'S')
+	if (game->config->player_dir == 'N' || game->config->player_dir == 'S')
 	{
 		player->plane_x = 0.66;
 		player->plane_y = 0;
 		player->dir_x = 0;
 	}
-	if(game->config->player_dir == 'W' || game->config->player_dir == 'E')
+	if (game->config->player_dir == 'W' || game->config->player_dir == 'E')
 	{
 		player->plane_x = 0;
 		player->plane_y = 0.66;

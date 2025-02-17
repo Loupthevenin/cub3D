@@ -6,12 +6,11 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:59:52 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/17 13:53:15 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:28:35 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
-
+#include "../../includes/cub3d.h"
 
 int	close_window(t_game *game, int status)
 {

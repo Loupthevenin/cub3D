@@ -6,11 +6,11 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:18:10 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/17 13:48:19 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:29:33 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	handle_key_release(int keycode, t_game *game)
 {
@@ -82,7 +82,7 @@ int	key_press(int keycode, t_game *game)
 
 int	handle_key_press(int keycode, void *param)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = (t_game *)param;
 	if (keycode == XK_Escape)

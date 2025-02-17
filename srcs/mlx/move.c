@@ -6,11 +6,11 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:41:58 by opdibia           #+#    #+#             */
-/*   Updated: 2025/02/17 13:47:52 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:29:42 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	set_value(t_game *game, int new_x, int new_y)
 {
@@ -23,8 +23,8 @@ static void	set_value(t_game *game, int new_x, int new_y)
 
 void	move_player(t_game *game)
 {
-	t_player player;
-	t_config *config;
+	t_player	player;
+	t_config	*config;
 
 	config = game->config;
 	player = game->player;

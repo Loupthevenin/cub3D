@@ -6,11 +6,11 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:33:14 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/17 13:47:19 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:28:29 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 {

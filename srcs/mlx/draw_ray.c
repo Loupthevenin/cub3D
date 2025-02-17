@@ -6,33 +6,33 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:04 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/17 14:03:51 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:12:42 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	get_dir(t_game *game, float mapx, float mapy)
 {
-	if (game->player.ray_dir_x < 0) //gauche
+	if (game->player.ray_dir_x < 0) // gauche
 	{
 		game->player.stepx = -1;
 		game->player.side_dist_x = (game->player.pos_x - mapx)
 			* game->player.delta_dist_x;
 	}
-	else //droite
+	else // droite
 	{
 		game->player.stepx = 1;
 		game->player.side_dist_x = (mapx + 1.0 - game->player.pos_x)
 			* game->player.delta_dist_x;
 	}
-	if (game->player.ray_dir_y < 0) //haut
+	if (game->player.ray_dir_y < 0) // haut
 	{
 		game->player.stepy = -1;
 		game->player.side_dist_y = (game->player.pos_y - mapy)
 			* game->player.delta_dist_y;
 	}
-	else //bas
+	else // bas
 	{
 		game->player.stepy = 1;
 		game->player.side_dist_y = (mapy + 1.0 - game->player.pos_y)
@@ -131,6 +131,37 @@ int	get_side(t_game *game, float *mapx, float *mapy)
 	return (0);
 }
 
+static void	draw_wall(t_game *game, int x, int side, float mapx, float mapy)
+{
+	float	perp_wall_dist;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	int		color;
+	int		y;
+
+	if (side == 0)
+		perp_wall_dist = (mapx - game->player.pos_x + (1 - game->player.stepx)
+				/ 2) / game->player.ray_dir_x;
+	else
+		perp_wall_dist = (mapy - game->player.pos_y + (1 - game->player.stepy)
+				/ 2) / game->player.ray_dir_y;
+	line_height = (int)(HEIGHT / perp_wall_dist);
+	draw_start = -line_height / 2 + HEIGHT / 2;
+	draw_end = line_height / 2 + HEIGHT / 2;
+	if (draw_start < 0)
+		draw_start = 0;
+	if (draw_end >= HEIGHT)
+		draw_end = HEIGHT + 1;
+	color = RED_PIXEL;
+	y = draw_start;
+	while (y < draw_end)
+	{
+		my_mlx_pixel_put(&game->mlx, x, y, color);
+		y++;
+	}
+}
+
 void	cast_ray(t_game *game)
 {
 	int		x;
@@ -148,13 +179,13 @@ void	cast_ray(t_game *game)
 		get_dir(game, mapx, mapy);
 		while (touch == 0)
 		{
-			get_side(game, &mapx, &mapy);
+			side = get_side(game, &mapx, &mapy);
 			if (game->config->map[(int)mapy][(int)mapx]
 				&& game->config->map[(int)mapy][(int)mapx] == '1')
 				touch = 1;
 		}
 		set_line(game, mapx, mapy);
-		(void)side;
+		draw_wall(game, x, side, mapx, mapy);
 		x++;
 	}
 	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);
