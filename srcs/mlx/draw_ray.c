@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:04 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/17 17:12:42 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:13:31 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,11 @@ void	set_line(t_game *game, float mapx, float mapy)
 	int	startX;
 	int	startY;
 
-	endX = (mapx * game->mlx.tileswidth + game->mlx.tileswidth / 2);
-	endY = (mapy * game->mlx.tilesheight + game->mlx.tilesheight / 2);
-	startX = (game->player.pos_x * game->mlx.tileswidth + game->mlx.tileswidth
+	endX = (mapx * game->mlx.mini_width + game->mlx.mini_width / 2);
+	endY = (mapy * game->mlx.mini_height + game->mlx.mini_height / 2);
+	startX = (game->player.pos_x * game->mlx.mini_width + game->mlx.mini_width
 			/ 2);
-	startY = (game->player.pos_y * game->mlx.tilesheight + game->mlx.tilesheight
+	startY = (game->player.pos_y * game->mlx.mini_height + game->mlx.mini_height
 			/ 2);
 	draw_line(&game->mlx, startX, startY, endX, endY);
 }
@@ -139,20 +139,25 @@ static void	draw_wall(t_game *game, int x, int side, float mapx, float mapy)
 	int		draw_end;
 	int		color;
 	int		y;
-
+	// (void)mapx;
+	// (void)mapy;
 	if (side == 0)
 		perp_wall_dist = (mapx - game->player.pos_x + (1 - game->player.stepx)
 				/ 2) / game->player.ray_dir_x;
 	else
 		perp_wall_dist = (mapy - game->player.pos_y + (1 - game->player.stepy)
-				/ 2) / game->player.ray_dir_y;
+	/ 2) / game->player.ray_dir_y;
+	// if(side == 0)
+	// 	perp_wall_dist = game->player.side_dist_x - game->player.delta_dist_x;
+	// else
+	// 	perp_wall_dist = game->player.side_dist_y - game->player.delta_dist_y;	
 	line_height = (int)(HEIGHT / perp_wall_dist);
 	draw_start = -line_height / 2 + HEIGHT / 2;
 	draw_end = line_height / 2 + HEIGHT / 2;
 	if (draw_start < 0)
 		draw_start = 0;
 	if (draw_end >= HEIGHT)
-		draw_end = HEIGHT + 1;
+		draw_end = HEIGHT - 1;
 	color = RED_PIXEL;
 	y = draw_start;
 	while (y < draw_end)

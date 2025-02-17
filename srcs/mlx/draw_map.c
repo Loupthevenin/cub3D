@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:23:59 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/17 17:07:12 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:01:47 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	draw_tile(t_mlx *mlx, int x, int y, int color)
 	int	i;
 	int	j;
 
-	mlx->start_x = (int)x * mlx->tileswidth;
-	mlx->start_y = (int)y * mlx->tilesheight;
-	mlx->end_x = (int)(x + 1) * mlx->tileswidth;
-	mlx->end_y = (int)(y + 1) * mlx->tilesheight;
+	mlx->start_x = (int)x * mlx->mini_width;
+	mlx->start_y = (int)y * mlx->mini_height;
+	mlx->end_x = (int)(x + 1) * mlx->mini_width;
+	mlx->end_y = (int)(y + 1) * mlx->mini_height;
 	i = mlx->start_y;
 	j = mlx->start_x;
 	while (i < mlx->end_y)

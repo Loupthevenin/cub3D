@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:05:23 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/17 14:05:55 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:59:47 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 
 # define WIDTH 820
 # define HEIGHT 420
+
+# define MINI_W 200
+# define MINI_H 120
 
 # define GREEN_PIXEL 0xFF00
 # define RED_PIXEL 0xFF0000
@@ -53,6 +56,7 @@ typedef struct s_config
 	int			player_x;
 	int			player_y;
 	char		player_dir;
+	
 	// float time;
 	// float oldtime;
 }				t_config;
@@ -69,8 +73,6 @@ typedef struct s_player
 	float		plane_y;
 	float		new_x;
 	float		new_y;
-	float		ray_x;
-	float		ray_y;
 	float		ray_dir_x;
 	float		ray_dir_y;
 	float		delta_dist_x;
@@ -91,11 +93,12 @@ typedef struct s_mlx
 	char		*addr;
 	float		tileswidth;
 	float		tilesheight;
-	float		tilesize;
 	int			start_x;
 	int			start_y;
 	int			end_x;
 	int			end_y;
+	float		mini_width;
+	float		mini_height;
 }				t_mlx;
 
 typedef struct s_game

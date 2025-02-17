@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:33:14 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/17 16:28:29 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:47:11 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,15 @@ void	get_tiles_size(t_game *game)
 {
 	game->mlx.tileswidth = (float)WIDTH / (float)game->config->map_width;
 	game->mlx.tilesheight = (float)HEIGHT / (float)game->config->map_height;
-	if (game->mlx.tileswidth < game->mlx.tilesheight)
-		game->mlx.tilesize = game->mlx.tileswidth;
-	else
-		game->mlx.tilesize = game->mlx.tilesheight;
+	// if (game->mlx.tileswidth < game->mlx.tilesheight)
+	// 	game->mlx.tilesize = game->mlx.tileswidth;
+	// else
+	// 	game->mlx.tilesize = game->mlx.tilesheight;
+	game->mlx.mini_width = (float)MINI_W / (float)game->config->map_width;
+	game->mlx.mini_height = (float)MINI_H / (float)game->config->map_height;
+	// if (game->mlx.mini_width < game->mlx.mini_height)
+	// 	game->mlx.tilesize = game->mlx.mini_width;
+	// else
+	// 	game->mlx.tilesize = game->mlx.mini_height;
+	
 }

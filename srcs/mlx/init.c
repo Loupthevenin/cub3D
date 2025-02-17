@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:33:55 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/17 16:29:48 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:58:57 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,9 @@ void	init(t_game *game)
 
 	set_dir(game, &player);
 	get_tiles_size(game);
-	game->player = player;
 	game->mlx.start_x = 0;
 	game->mlx.start_y = 0;
 	game->mlx.end_x = 0;
 	game->mlx.end_y = 0;
-	player.ray_dir_x = 0;
-	player.ray_dir_y = 0;
+	game->player = player;
 }
