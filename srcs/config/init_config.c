@@ -6,7 +6,7 @@
 /*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:10:59 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/13 16:17:41 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:27:19 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void	init_config(t_config *config, const char *path)
 	if (!file_content)
 		exit(EXIT_FAILURE);
 	set_default_values(config);
+	if (check_unique_texture_colors(file_content))
+		exit_config(config, file_content);
 	index_map = parse_texture_colors(config, file_content);
 	if (check_texture(config))
 		exit_config(config, file_content);
