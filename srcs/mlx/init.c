@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:33:55 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/17 17:58:57 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/18 11:34:26 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,40 @@ void	set_dir(t_game *game, t_player *player)
 		player->dir_x = 1;
 }
 
+static void	load_texture(t_game *game, t_texture *texture, char *path)
+{
+	texture->img = mlx_xpm_file_to_image(game->mlx.mlx, path, &texture->width,
+			&texture->height);
+	if (!texture->img)
+	{
+		ft_putstr_fd("Error\nload XPM failed\n", 2);
+		close_window(game, EXIT_FAILURE);
+	}
+	texture->addr = mlx_get_data_addr(texture->img, &texture->bpp,
+			&texture->line_length, &texture->endian);
+}
+
+static void	init_textures(t_game *game)
+{
+	int	is_texture;
+
+	is_texture = 0;
+	if (is_texture)
+	{
+		load_texture(game, &game->mlx.textures[0], game->config->texture_n);
+		load_texture(game, &game->mlx.textures[1], game->config->texture_s);
+		load_texture(game, &game->mlx.textures[2], game->config->texture_e);
+		load_texture(game, &game->mlx.textures[3], game->config->texture_w);
+	}
+	else
+	{
+		game->mlx.textures[0].img = NULL;
+		game->mlx.textures[1].img = NULL;
+		game->mlx.textures[2].img = NULL;
+		game->mlx.textures[3].img = NULL;
+	}
+}
+
 void	init(t_game *game)
 {
 	t_player	player;
@@ -47,4 +81,5 @@ void	init(t_game *game)
 	game->mlx.end_x = 0;
 	game->mlx.end_y = 0;
 	game->player = player;
+	init_textures(game);
 }

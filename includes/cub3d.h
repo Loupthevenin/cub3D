@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:05:23 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/18 10:04:38 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/18 11:07:01 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,17 @@ typedef struct s_config
 	// float oldtime;
 }				t_config;
 
+typedef struct s_texture
+{
+	void		*img;
+	char		*addr;
+	int			width;
+	int			height;
+	int			bpp;
+	int			line_length;
+	int			endian;
+}				t_texture;
+
 typedef struct s_player
 {
 	float		pos_x;
@@ -99,6 +110,7 @@ typedef struct s_mlx
 	int			end_y;
 	float		mini_width;
 	float		mini_height;
+	t_texture	textures[4];
 }				t_mlx;
 
 typedef struct s_game
