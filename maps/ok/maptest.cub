@@ -3,8 +3,8 @@ SO ./assets/file_s
 WE ./assets/file_w
 EA ./assets/file_e
 
-F 220,20,0
-C 225,30,0
+F 0,255,0
+C 0,0,255
 
 
 1111111111111111111111111  

@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:33:14 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/17 17:47:11 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:04:19 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,9 @@ void	get_tiles_size(t_game *game)
 	// 	game->mlx.tilesize = game->mlx.mini_width;
 	// else
 	// 	game->mlx.tilesize = game->mlx.mini_height;
-	
+}
+
+int	rgb_to_int(t_color color)
+{
+	return ((color.r << 16) | (color.g << 8) | color.b);
 }

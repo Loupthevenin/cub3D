@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:05:23 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/17 19:39:54 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:04:38 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ void			cast_ray(t_game *game);
 void			init(t_game *game);
 void			get_tiles_size(t_game *game);
 void			my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+int				rgb_to_int(t_color color);
 int				handle_key_press(int keycode, void *param);
 int				handle_key_release(int keycode, t_game *game);
 
