@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:33:55 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/18 11:34:26 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:36:12 by opdibia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	init(t_game *game)
 
 	set_dir(game, &player);
 	get_tiles_size(game);
+	player.pos_x = game->config->player_x;
+	player.pos_y = game->config->player_y;
 	game->mlx.start_x = 0;
 	game->mlx.start_y = 0;
 	game->mlx.end_x = 0;

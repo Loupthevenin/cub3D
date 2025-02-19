@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:18:10 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/17 18:22:39 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:26:34 by opdibia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,42 +35,17 @@ void	update_dir(t_game *game, float angle)
 		* cos(angle);
 }
 
-int	player_move(int keycode, t_game *game)
-{
-	if (keycode == XK_d)
-	{
-		game->player.new_x += 1;
-		return (1);
-	}
-	else if (keycode == XK_a)
-	{
-		game->player.new_x -= 1;
-		return (1);
-	}
-	else if (keycode == XK_s)
-	{
-		game->player.new_y += 1;
-		return (1);
-	}
-	else if (keycode == XK_w)
-	{
-		game->player.new_y -= 1;
-		return (1);
-	}
-	return (0);
-}
-
 int	key_press(int keycode, t_game *game)
 {
 	double	angle;
 
 	angle = 0.15;
-	if (keycode == XK_Right)
+	if (keycode == XK_Left)
 	{
 		update_dir(game, -angle);
 		return (1);
 	}
-	else if (keycode == XK_Left)
+	else if (keycode == XK_Right)
 	{
 		update_dir(game, angle);
 		return (1);

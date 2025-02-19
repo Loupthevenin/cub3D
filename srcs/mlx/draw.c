@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 13:53:07 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/18 10:04:42 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:32:07 by opdibia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static void	draw_colors(t_game *game)
 
 void	draw(t_game *game)
 {
-	// mlx_clear_window(game->mlx.mlx, game->mlx.win);
 	draw_background(game);
 	draw_colors(game);
 	draw_map(game);

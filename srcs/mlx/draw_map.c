@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:23:59 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/17 18:01:47 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:32:16 by opdibia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	draw_grid(t_mlx *mlx, int i, int j)
 
 void	draw_tile(t_mlx *mlx, int x, int y, int color)
 {
-	int	i;
-	int	j;
+	float	i;
+	float	j;
 
 	mlx->start_x = (int)x * mlx->mini_width;
 	mlx->start_y = (int)y * mlx->mini_height;
@@ -52,31 +52,24 @@ void	draw_tile(t_mlx *mlx, int x, int y, int color)
 	draw_grid(mlx, i, j);
 }
 
-void	refresh_player(t_game *game, int x, int y)
-{
-	game->player.pos_x = x;
-	game->player.pos_y = y;
-}
-
 void	draw_map(t_game *game)
 {
-	int	x;
-	int	y;
+	float	x;
+	float	y;
 
 	y = 0;
-	while (game->config->map[y])
+	while (game->config->map[(int)y])
 	{
 		x = 0;
-		while (game->config->map[y][x])
+		while (game->config->map[(int)y][(int)x])
 		{
-			if (game->config->map[y][x] == '1')
+			if (game->config->map[(int)y][(int)x] == '1')
 				draw_tile(&game->mlx, x, y, WHITE_PIXEL);
-			if (game->config->map[y][x] == '0')
+			if (game->config->map[(int)y][(int)x] == '0')
 				draw_tile(&game->mlx, x, y, BLACK_PIXEL);
-			if (game->config->map[y][x] == game->config->player_dir)
+			if (y == game->player.pos_y && x == game->player.pos_x)
 			{
 				draw_tile(&game->mlx, x, y, RED_PIXEL);
-				refresh_player(game, x, y);
 			}
 			x++;
 		}

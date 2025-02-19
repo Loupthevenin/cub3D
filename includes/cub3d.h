@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:05:23 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/18 11:07:01 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:27:08 by opdibia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,6 @@ void			my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 int				rgb_to_int(t_color color);
 int				handle_key_press(int keycode, void *param);
 int				handle_key_release(int keycode, t_game *game);
+int				player_move(int keycode, t_game *game);
 
 #endif
