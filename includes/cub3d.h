@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:05:23 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/19 12:27:08 by opdibia          ###   ########.fr       */
+/*   Updated: 2025/02/20 18:55:57 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,23 +74,23 @@ typedef struct s_texture
 
 typedef struct s_player
 {
-	float		pos_x;
-	float		pos_y;
-	float		dir_x;
-	float		dir_y;
-	float		stepx;
-	float		stepy;
-	float		plane_x;
-	float		plane_y;
-	float		new_x;
-	float		new_y;
-	float		ray_dir_x;
-	float		ray_dir_y;
-	float		delta_dist_x;
-	float		delta_dist_y;
-	float		side_dist_x;
-	float		side_dist_y;
-	float		camerax;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		stepx;
+	double		stepy;
+	double		plane_x;
+	double		plane_y;
+	double		new_x;
+	double		new_y;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		camerax;
 }				t_player;
 
 typedef struct s_mlx
@@ -102,14 +102,15 @@ typedef struct s_mlx
 	int			line_length;
 	int			endian;
 	char		*addr;
-	float		tileswidth;
-	float		tilesheight;
+	double		tileswidth;
+	double		tilesheight;
+	double tilesize;
 	int			start_x;
 	int			start_y;
 	int			end_x;
 	int			end_y;
-	float		mini_width;
-	float		mini_height;
+	double		mini_width;
+	double		mini_height;
 	t_texture	textures[4];
 }				t_mlx;
 
@@ -155,5 +156,6 @@ int				rgb_to_int(t_color color);
 int				handle_key_press(int keycode, void *param);
 int				handle_key_release(int keycode, t_game *game);
 int				player_move(int keycode, t_game *game);
+void	draw_tile(t_mlx *mlx, int x, int y, int color);
 
 #endif

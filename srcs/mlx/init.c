@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:33:55 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/19 11:36:12 by opdibia          ###   ########.fr       */
+/*   Updated: 2025/02/20 19:03:58 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,42 @@
 
 void	set_dir(t_game *game, t_player *player)
 {
-	if (game->config->player_dir == 'N' || game->config->player_dir == 'S')
+	if (game->config->player_dir == 'N')
 	{
 		player->plane_x = 0.66;
 		player->plane_y = 0;
 		player->dir_x = 0;
+		player->dir_y = -1;
 	}
-	if (game->config->player_dir == 'W' || game->config->player_dir == 'E')
+	if (game->config->player_dir == 'W')
 	{
 		player->plane_x = 0;
 		player->plane_y = 0.66;
+		player->dir_x = -1;
 		player->dir_y = 0;
 	}
-	if (game->config->player_dir == 'N')
-		player->dir_y = -1;
-	else if (game->config->player_dir == 'S')
+	if (game->config->player_dir == 'S' )
+	{
+		player->plane_x = 0.66;
+		player->plane_y = 0;
+		player->dir_x = 0;
 		player->dir_y = 1;
-	if (game->config->player_dir == 'W')
-		player->dir_x = -1;
-	else if (game->config->player_dir == 'E')
+	}
+	if (game->config->player_dir == 'E')
+	{
+		player->plane_x = 0;
+		player->plane_y = 0.66;
 		player->dir_x = 1;
+		player->dir_y = 0;
+	}
+	// if (game->config->player_dir == 'N')
+	// 	player->dir_y = -1;
+	// else if (game->config->player_dir == 'S')
+	// 	player->dir_x = -1;
+	// if (game->config->player_dir == 'W')
+	// 	player->dir_y = 1;
+	// else if (game->config->player_dir == 'E')
+	// 	player->dir_x = 1;
 }
 
 static void	load_texture(t_game *game, t_texture *texture, char *path)
@@ -76,8 +92,8 @@ void	init(t_game *game)
 
 	set_dir(game, &player);
 	get_tiles_size(game);
-	player.pos_x = game->config->player_x;
-	player.pos_y = game->config->player_y;
+	player.pos_x = game->config->player_x ;
+	player.pos_y = game->config->player_y ;
 	game->mlx.start_x = 0;
 	game->mlx.start_y = 0;
 	game->mlx.end_x = 0;

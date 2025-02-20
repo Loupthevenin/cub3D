@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:33:14 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/18 10:04:19 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:57:37 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 
 void	get_tiles_size(t_game *game)
 {
-	game->mlx.tileswidth = (float)WIDTH / (float)game->config->map_width;
-	game->mlx.tilesheight = (float)HEIGHT / (float)game->config->map_height;
-	// if (game->mlx.tileswidth < game->mlx.tilesheight)
-	// 	game->mlx.tilesize = game->mlx.tileswidth;
-	// else
-	// 	game->mlx.tilesize = game->mlx.tilesheight;
-	game->mlx.mini_width = (float)MINI_W / (float)game->config->map_width;
-	game->mlx.mini_height = (float)MINI_H / (float)game->config->map_height;
+	game->mlx.tilesize = 0;
+	game->mlx.tileswidth = (double)WIDTH / (double)game->config->map_width;
+	game->mlx.tilesheight = (double)HEIGHT / (double)game->config->map_height;
+	if (game->mlx.tileswidth < game->mlx.tilesheight)
+		game->mlx.tilesize = game->mlx.tileswidth;
+	else
+		game->mlx.tilesize = game->mlx.tilesheight;
+	game->mlx.mini_width = (double)MINI_W / (double)game->config->map_width;
+	game->mlx.mini_height = (double)MINI_H / (double)game->config->map_height;
 	// if (game->mlx.mini_width < game->mlx.mini_height)
 	// 	game->mlx.tilesize = game->mlx.mini_width;
 	// else

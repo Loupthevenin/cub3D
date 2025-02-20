@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:18:10 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/19 12:26:34 by opdibia          ###   ########.fr       */
+/*   Updated: 2025/02/20 19:11:01 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	handle_key_release(int keycode, t_game *game)
 	return (0);
 }
 
-void	update_dir(t_game *game, float angle)
+void	update_dir(t_game *game, double angle)
 {
 	double	oldDirX;
 	double	oldPlaneX;
@@ -39,7 +39,7 @@ int	key_press(int keycode, t_game *game)
 {
 	double	angle;
 
-	angle = 0.15;
+	angle = 0.033*1.8;
 	if (keycode == XK_Left)
 	{
 		update_dir(game, -angle);
