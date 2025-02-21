@@ -6,24 +6,21 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:59:52 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/18 11:32:53 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/21 11:35:54 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	close_window(t_game *game, int status)
+int	close_window(t_game *game, int status, int i)
 {
-	int	i;
-
-	i = 0;
 	if (game->mlx.mlx)
 	{
-		while (i < 4)
+		while (i >= 0)
 		{
 			if (game->mlx.textures[i].img)
 				mlx_destroy_image(game->mlx.mlx, game->mlx.textures[i].img);
-			i++;
+			i--;
 		}
 	}
 	if (game->mlx.win)

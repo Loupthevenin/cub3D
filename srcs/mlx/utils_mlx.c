@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:33:14 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/20 18:57:37 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/21 10:31:08 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,33 @@ void	get_tiles_size(t_game *game)
 int	rgb_to_int(t_color color)
 {
 	return ((color.r << 16) | (color.g << 8) | color.b);
+}
+
+t_texture	*get_texture(t_game *game, int side)
+{
+	if (side == 0)
+	{
+		if (game->player.stepx == -1)
+			return (&game->mlx.textures[3]);
+		else
+			return (&game->mlx.textures[2]);
+	}
+	else
+	{
+		if (game->player.stepy == -1)
+			return (&game->mlx.textures[0]);
+		else
+			return (&game->mlx.textures[1]);
+	}
+}
+
+double	get_wall_x(t_game *game, int side, double perp_wall_dist)
+{
+	double	wall_x;
+
+	if (side == 0)
+		wall_x = game->player.pos_y + perp_wall_dist * game->player.ray_dir_y;
+	else
+		wall_x = game->player.pos_x + perp_wall_dist * game->player.ray_dir_x;
+	return (wall_x - floor(wall_x));
 }

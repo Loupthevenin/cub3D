@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:05:23 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/20 18:55:57 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/21 11:36:13 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_mlx
 	char		*addr;
 	double		tileswidth;
 	double		tilesheight;
-	double tilesize;
+	double		tilesize;
 	int			start_x;
 	int			start_y;
 	int			end_x;
@@ -144,7 +144,7 @@ void			parse_size_map(t_config *config, char **map);
 
 // mlx
 void			set_window(t_config *config);
-int				close_window(t_game *game, int status);
+int				close_window(t_game *game, int status, int i);
 void			draw(t_game *game);
 void			draw_map(t_game *game);
 void			move_player(t_game *game);
@@ -156,6 +156,8 @@ int				rgb_to_int(t_color color);
 int				handle_key_press(int keycode, void *param);
 int				handle_key_release(int keycode, t_game *game);
 int				player_move(int keycode, t_game *game);
-void	draw_tile(t_mlx *mlx, int x, int y, int color);
+void			draw_tile(t_mlx *mlx, int x, int y, int color);
+t_texture		*get_texture(t_game *game, int side);
+double			get_wall_x(t_game *game, int side, double perp_wall_dist);
 
 #endif

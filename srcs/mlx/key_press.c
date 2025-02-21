@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:18:10 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/20 19:11:01 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/21 11:37:06 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	key_press(int keycode, t_game *game)
 {
 	double	angle;
 
-	angle = 0.033*1.8;
+	angle = 0.033 * 1.8;
 	if (keycode == XK_Left)
 	{
 		update_dir(game, -angle);
@@ -61,7 +61,7 @@ int	handle_key_press(int keycode, void *param)
 
 	game = (t_game *)param;
 	if (keycode == XK_Escape)
-		close_window(param, 0);
+		close_window(param, 0, 3);
 	game->player.new_x = game->player.pos_x;
 	game->player.new_y = game->player.pos_y;
 	if (key_press(keycode, game) == 1)
