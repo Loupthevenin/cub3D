@@ -1,10 +1,10 @@
-NO ./assets/wall.xpm
-SO ./assets/player.xpm
-WE ./assets/collectible.xpm
-EA ./assets/floor.xpm
+NO ./assets/file_n.xpm
+SO ./assets/file_s.xpm
+WE ./assets/file_w.xpm
+EA ./assets/file_e.xpm
 
-F 0,255,0
-C 0,0,255
+F 100,32,32
+C 0,0,0
 
 
 1111111111111111111111111  

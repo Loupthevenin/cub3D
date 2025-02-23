@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:18:10 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/21 11:37:06 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/23 20:02:29 by opdibia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,18 @@ int	handle_key_release(int keycode, t_game *game)
 
 void	update_dir(t_game *game, double angle)
 {
-	double	oldDirX;
-	double	oldPlaneX;
+	double	old_dir_x;
+	double	old_plane_x;
 
-	oldDirX = game->player.dir_x;
+	old_dir_x = game->player.dir_x;
 	game->player.dir_x = game->player.dir_x * cos(angle) - game->player.dir_y
 		* sin(angle);
-	game->player.dir_y = oldDirX * sin(angle) + game->player.dir_y * cos(angle);
-	oldPlaneX = game->player.plane_x;
+	game->player.dir_y = old_dir_x * sin(angle) + game->player.dir_y
+		* cos(angle);
+	old_plane_x = game->player.plane_x;
 	game->player.plane_x = game->player.plane_x * cos(angle)
 		- game->player.plane_y * sin(angle);
-	game->player.plane_y = oldPlaneX * sin(angle) + game->player.plane_y
+	game->player.plane_y = old_plane_x * sin(angle) + game->player.plane_y
 		* cos(angle);
 }
 

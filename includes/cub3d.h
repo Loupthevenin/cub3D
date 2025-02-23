@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:05:23 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/21 11:36:13 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/23 20:10:41 by opdibia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,6 @@ typedef struct s_config
 	int			player_x;
 	int			player_y;
 	char		player_dir;
-
-	// float time;
-	// float oldtime;
 }				t_config;
 
 typedef struct s_texture
@@ -71,6 +68,14 @@ typedef struct s_texture
 	int			line_length;
 	int			endian;
 }				t_texture;
+
+typedef struct s_wall
+{
+	double		perp_dist;
+	int			draw_start;
+	int			draw_end;
+	int			color;
+}				t_wall;
 
 typedef struct s_player
 {
@@ -159,5 +164,6 @@ int				player_move(int keycode, t_game *game);
 void			draw_tile(t_mlx *mlx, int x, int y, int color);
 t_texture		*get_texture(t_game *game, int side);
 double			get_wall_x(t_game *game, int side, double perp_wall_dist);
+void			draw_wall(t_game *game, t_wall *wall, int side, int x);
 
 #endif

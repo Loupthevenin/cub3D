@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:33:14 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/21 10:31:08 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/23 19:55:05 by opdibia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,6 @@ void	get_tiles_size(t_game *game)
 		game->mlx.tilesize = game->mlx.tilesheight;
 	game->mlx.mini_width = (double)MINI_W / (double)game->config->map_width;
 	game->mlx.mini_height = (double)MINI_H / (double)game->config->map_height;
-	// if (game->mlx.mini_width < game->mlx.mini_height)
-	// 	game->mlx.tilesize = game->mlx.mini_width;
-	// else
-	// 	game->mlx.tilesize = game->mlx.mini_height;
 }
 
 int	rgb_to_int(t_color color)

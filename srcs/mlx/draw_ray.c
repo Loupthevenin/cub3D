@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:04 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/21 11:16:06 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/23 19:54:32 by opdibia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 void	get_dir(t_game *game, double mapx, double mapy)
 {
-	if (game->player.ray_dir_x < 0) // gauche
+	if (game->player.ray_dir_x < 0)
 	{
 		game->player.stepx = -1;
 		game->player.side_dist_x = (game->player.pos_x - mapx)
 			* game->player.delta_dist_x;
 	}
-	else // droite
+	else
 	{
 		game->player.stepx = 1;
 		game->player.side_dist_x = (mapx + 1.0 - game->player.pos_x)
 			* game->player.delta_dist_x;
 	}
-	if (game->player.ray_dir_y < 0) // haut
+	if (game->player.ray_dir_y < 0)
 	{
 		game->player.stepy = -1;
 		game->player.side_dist_y = (game->player.pos_y - mapy)
 			* game->player.delta_dist_y;
 	}
-	else // bas
+	else
 	{
 		game->player.stepy = 1;
 		game->player.side_dist_y = (mapy + 1.0 - game->player.pos_y)
@@ -40,44 +40,58 @@ void	get_dir(t_game *game, double mapx, double mapy)
 	}
 }
 
-void	draw_line(t_mlx *mlx, double x0, double y0, double x1, double y1)
-{
-	double	dx;
-	double	dy;
-	int		sx;
-	int		sy;
-	double	err;
-	int		e2;
+// void	draw_line(t_mlx *mlx, double x0, double y0, double x1, double y1)
+// {
+// 	double	dx;
+// 	double	dy;
+// 	int		sx;
+// 	int		sy;
+// 	double	err;
+// 	int		e2;
 
-	dx = fabs(x1 - x0);
-	dy = fabs(y1 - y0);
-	if (x0 < x1)
-		sx = 1;
-	else
-		sx = -1;
-	if (y0 < y1)
-		sy = 1;
-	else
-		sy = -1;
-	err = dx - dy;
-	while (1)
-	{
-		my_mlx_pixel_put(mlx, x0, y0, GREEN_PIXEL);
-		if (x0 == x1 && y0 == y1)
-			break ;
-		e2 = 2 * err;
-		if (e2 > -dy)
-		{
-			err -= dy;
-			x0 += sx;
-		}
-		if (e2 < dx)
-		{
-			err += dx;
-			y0 += sy;
-		}
-	}
-}
+// 	dx = fabs(x1 - x0);
+// 	dy = fabs(y1 - y0);
+// 	if (x0 < x1)
+// 		sx = 1;
+// 	else
+// 		sx = -1;
+// 	if (y0 < y1)
+// 		sy = 1;
+// 	else
+// 		sy = -1;
+// 	err = dx - dy;
+// 	while (1)
+// 	{
+// 		my_mlx_pixel_put(mlx, x0, y0, GREEN_PIXEL);
+// 		if (x0 == x1 && y0 == y1)
+// 			break ;
+// 		e2 = 2 * err;
+// 		if (e2 > -dy)
+// 		{
+// 			err -= dy;
+// 			x0 += sx;
+// 		}
+// 		if (e2 < dx)
+// 		{
+// 			err += dx;
+// 			y0 += sy;
+// 		}
+// 	}
+// }
+
+// void	set_line(t_game *game, double mapx, double mapy)
+// {
+// 	int	end_x;
+// 	int	end_y;
+// 	int	start_x;
+// 	int	start_y;
+
+// 	end_x = (mapx * game->mlx.mini_width + game->mlx.mini_width / 2 );
+// 	end_y = (mapy * game->mlx.mini_height + game->mlx.mini_height / 2);
+// 	start_x = (game->player.pos_x * game->mlx.mini_width);
+// 	start_y = (game->player.pos_y * game->mlx.mini_height);
+// 	draw_line(&game->mlx, start_x, start_y, end_x , end_y );
+// }
 
 void	init_player(t_game *game, int x, double *mapx, double *mapy)
 {
@@ -98,20 +112,6 @@ void	init_player(t_game *game, int x, double *mapx, double *mapy)
 	game->player.delta_dist_y = fabs(1 / game->player.ray_dir_y);
 }
 
-void	set_line(t_game *game, double mapx, double mapy)
-{
-	int	endX;
-	int	endY;
-	int	startX;
-	int	startY;
-
-	endX = (mapx * game->mlx.mini_width + game->mlx.mini_width / 2);
-	endY = (mapy * game->mlx.mini_height + game->mlx.mini_height / 2);
-	startX = (game->player.pos_x * game->mlx.mini_width);
-	startY = (game->player.pos_y * game->mlx.mini_height);
-	draw_line(&game->mlx, startX, startY, endX, endY);
-}
-
 int	get_side(t_game *game, double *mapx, double *mapy)
 {
 	if (game->player.side_dist_x < game->player.side_dist_y)
@@ -129,50 +129,25 @@ int	get_side(t_game *game, double *mapx, double *mapy)
 	return (0);
 }
 
-static void	draw_wall(t_game *game, int x, int side, double mapx, double mapy)
+static void	set_wall(t_game *game, int x, int side)
 {
-	double		perp_wall_dist;
 	int			line_height;
-	int			draw_start;
-	int			draw_end;
-	int			color;
-	int			y;
-	t_texture	*tex;
-	int			tex_x;
-	int			tex_y;
-	double		wall_x;
+	t_wall		wall;
 
 	if (side == 0)
-		perp_wall_dist = (mapx - game->player.pos_x + (1 - game->player.stepx)
-				/ 2) / game->player.ray_dir_x;
+		wall.perp_dist = (game->player.side_dist_x - game->player.delta_dist_x);
 	else
-		perp_wall_dist = (mapy - game->player.pos_y + (1 - game->player.stepy)
-				/ 2) / game->player.ray_dir_y;
-	if (perp_wall_dist <= 0)
-		perp_wall_dist = 0.01;
-	line_height = (int)(HEIGHT / perp_wall_dist);
-	draw_start = (-line_height / 2) + (HEIGHT / 2);
-	draw_end = (line_height / 2) + (HEIGHT / 2);
-	if (draw_start < 0)
-		draw_start = 0;
-	if (draw_end >= HEIGHT)
-		draw_end = HEIGHT - 1;
-	tex = get_texture(game, side);
-	wall_x = get_wall_x(game, side, perp_wall_dist);
-	tex_x = (int)(wall_x * (double)tex->width);
-	if ((side == 0 && game->player.ray_dir_x > 0) || (side == 1
-			&& game->player.ray_dir_y < 0))
-		tex_x = tex->width - tex_x - 1;
-	y = draw_start;
-	while (y <= draw_end)
-	{
-		tex_y = (int)(((y - draw_start) / (double)(draw_end - draw_start))
-				* tex->height);
-		color = *(int *)(tex->addr + (tex_y * tex->line_length + tex_x
-					* (tex->bpp / 8)));
-		my_mlx_pixel_put(&game->mlx, x, y, color);
-		y++;
-	}
+		wall.perp_dist = (game->player.side_dist_y - game->player.delta_dist_y);
+	if (wall.perp_dist <= 0)
+		wall.perp_dist = 0.01;
+	line_height = (int)(HEIGHT / wall.perp_dist);
+	wall.draw_start = (-line_height / 2) + (HEIGHT / 2);
+	wall.draw_end = (line_height / 2) + (HEIGHT / 2);
+	if (wall.draw_start < 0)
+		wall.draw_start = 0;
+	if (wall.draw_end >= HEIGHT)
+		wall.draw_end = HEIGHT - 1;
+	draw_wall(game, &wall, side, x);
 }
 
 void	cast_ray(t_game *game)
@@ -197,8 +172,8 @@ void	cast_ray(t_game *game)
 				&& game->config->map[(int)mapy][(int)mapx] == '1')
 				touch = 1;
 		}
-		set_line(game, mapx, mapy);
-		draw_wall(game, x, side, mapx, mapy);
+		set_wall(game, x, side);
+		// set_line(game, mapx, mapy);
 		x++;
 	}
 	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);

@@ -30,11 +30,11 @@ static void	print_config(t_config config)
 	printf("  - West:  %s\n", config.texture_w);
 	printf("\nColors:\n");
 	printf("  - Floor:   RGB(%d, %d, %d)\n", config.floor_color.r,
-			config.floor_color.g, config.floor_color.b);
+		config.floor_color.g, config.floor_color.b);
 	printf("  - Ceiling: RGB(%d, %d, %d)\n", config.ceiling_color.r,
-			config.ceiling_color.g, config.ceiling_color.b);
+		config.ceiling_color.g, config.ceiling_color.b);
 	printf("\nMap Size: Width = %d, Height = %d\n", config.map_width,
-			config.map_height);
+		config.map_height);
 	printf("\nPlayer Position:\n");
 	printf("  - X: %d\n", config.player_x);
 	printf("  - Y: %d\n", config.player_y);

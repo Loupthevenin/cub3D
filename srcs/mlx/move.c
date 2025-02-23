@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:41:58 by opdibia           #+#    #+#             */
-/*   Updated: 2025/02/21 11:52:53 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/23 20:08:27 by opdibia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	move_player(t_game *game)
 {
-	if (game->config->map[(int)game->player.new_y][(int)game->player.new_x] != '1')
+	if (game->config->map[(int)game->player.new_y][(int)game->player.new_x]
+		!= '1')
 	{
-		if (game->config->map[(int)game->player.pos_y][(int)game->player.pos_x] == game->config->player_dir)
-			game->config->map[(int)game->player.pos_y][(int)game->player.pos_x] = '0';
+		if (game->config->map[(int)game->player.pos_y][(int)game->player.pos_x]
+			== game->config->player_dir)
+			game->config->map[(int)game->player.pos_y][(int)game->player.pos_x]
+				= '0';
 		game->player.pos_x = game->player.new_x;
 		game->player.pos_y = game->player.new_y;
 	}
@@ -31,7 +34,8 @@ int	move_up_down(int keycode, t_game *game, double move_speed)
 		if (game->config->map[(int)(game->player.pos_y - (game->player.dir_y
 					* move_speed * 2))][(int)(game->player.pos_x)] == '0')
 			game->player.new_y -= (game->player.dir_y * move_speed);
-		if (game->config->map[(int)(game->player.pos_y)][(int)(game->player.pos_x
+		if (game->config->map[(int)(game->player.pos_y)]
+			[(int)(game->player.pos_x
 				- (game->player.dir_x * move_speed * 2))] == '0')
 			game->player.new_x -= (game->player.dir_x * move_speed);
 		return (1);
@@ -41,7 +45,8 @@ int	move_up_down(int keycode, t_game *game, double move_speed)
 		if (game->config->map[(int)(game->player.pos_y + (game->player.dir_y
 					* move_speed * 2))][(int)(game->player.pos_x)] == '0')
 			game->player.new_y += (game->player.dir_y * move_speed);
-		if (game->config->map[(int)(game->player.pos_y)][(int)(game->player.pos_x
+		if (game->config->map[(int)(game->player.pos_y)]
+			[(int)(game->player.pos_x
 				+ (game->player.dir_x * move_speed * 2))] == '0')
 			game->player.new_x += (game->player.dir_x * move_speed);
 		return (1);
@@ -53,7 +58,8 @@ int	move_left_right(int keycode, t_game *game, double move_speed)
 {
 	if (keycode == XK_a)
 	{
-		if (game->config->map[(int)(game->player.pos_y)][(int)(game->player.pos_x
+		if (game->config->map[(int)(game->player.pos_y)]
+			[(int)(game->player.pos_x
 				+ (game->player.dir_y * move_speed * 2))] == '0')
 			game->player.new_x += (game->player.dir_y * move_speed);
 		if (game->config->map[(int)(game->player.pos_y - (game->player.dir_x
@@ -63,7 +69,8 @@ int	move_left_right(int keycode, t_game *game, double move_speed)
 	}
 	else if (keycode == XK_d)
 	{
-		if (game->config->map[(int)(game->player.pos_y)][(int)(game->player.pos_x
+		if (game->config->map[(int)(game->player.pos_y)]
+			[(int)(game->player.pos_x
 				- (game->player.dir_y * move_speed * 2))] == '0')
 			game->player.new_x -= (game->player.dir_y * move_speed);
 		if (game->config->map[(int)(game->player.pos_y + (game->player.dir_x
