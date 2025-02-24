@@ -1,7 +1,7 @@
-NO ./assets/file_n
-SO ./assets/file_s
-WE ./assets/file_w
-EA ./assets/file_e
+NO ./assets/file_n.xpm
+SO ./assets/file_s.xpm
+WE ./assets/file_w.xpm
+EA ./assets/file_e.xpm
 
 F 220,100,0
 C 225,30,0

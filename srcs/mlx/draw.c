@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 13:53:07 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/23 19:55:43 by opdibia          ###   ########.fr       */
+/*   Updated: 2025/02/24 15:27:33 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,5 @@ void	draw(t_game *game)
 {
 	draw_background(game);
 	draw_colors(game);
-	// draw_map(game);
 	cast_ray(game);
 }

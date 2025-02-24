@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opdibia <opdibia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:04 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/23 19:54:32 by opdibia          ###   ########.fr       */
+/*   Updated: 2025/02/24 15:27:44 by opdi-bia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,59 +39,6 @@ void	get_dir(t_game *game, double mapx, double mapy)
 			* game->player.delta_dist_y;
 	}
 }
-
-// void	draw_line(t_mlx *mlx, double x0, double y0, double x1, double y1)
-// {
-// 	double	dx;
-// 	double	dy;
-// 	int		sx;
-// 	int		sy;
-// 	double	err;
-// 	int		e2;
-
-// 	dx = fabs(x1 - x0);
-// 	dy = fabs(y1 - y0);
-// 	if (x0 < x1)
-// 		sx = 1;
-// 	else
-// 		sx = -1;
-// 	if (y0 < y1)
-// 		sy = 1;
-// 	else
-// 		sy = -1;
-// 	err = dx - dy;
-// 	while (1)
-// 	{
-// 		my_mlx_pixel_put(mlx, x0, y0, GREEN_PIXEL);
-// 		if (x0 == x1 && y0 == y1)
-// 			break ;
-// 		e2 = 2 * err;
-// 		if (e2 > -dy)
-// 		{
-// 			err -= dy;
-// 			x0 += sx;
-// 		}
-// 		if (e2 < dx)
-// 		{
-// 			err += dx;
-// 			y0 += sy;
-// 		}
-// 	}
-// }
-
-// void	set_line(t_game *game, double mapx, double mapy)
-// {
-// 	int	end_x;
-// 	int	end_y;
-// 	int	start_x;
-// 	int	start_y;
-
-// 	end_x = (mapx * game->mlx.mini_width + game->mlx.mini_width / 2 );
-// 	end_y = (mapy * game->mlx.mini_height + game->mlx.mini_height / 2);
-// 	start_x = (game->player.pos_x * game->mlx.mini_width);
-// 	start_y = (game->player.pos_y * game->mlx.mini_height);
-// 	draw_line(&game->mlx, start_x, start_y, end_x , end_y );
-// }
 
 void	init_player(t_game *game, int x, double *mapx, double *mapy)
 {
@@ -173,7 +120,6 @@ void	cast_ray(t_game *game)
 				touch = 1;
 		}
 		set_wall(game, x, side);
-		// set_line(game, mapx, mapy);
 		x++;
 	}
 	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);
