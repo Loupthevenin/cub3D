@@ -6,7 +6,7 @@
 /*   By: opdi-bia <opdi-bia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:59:52 by opdi-bia          #+#    #+#             */
-/*   Updated: 2025/02/24 15:41:10 by opdi-bia         ###   ########.fr       */
+/*   Updated: 2025/02/26 08:44:30 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,16 @@ int	close_window(t_game *game, int status, int i)
 
 int	close_red_cross(t_game *game)
 {
-	int	status;
 	int	i;
 
-	status = 0;
 	i = 3;
 	if (game->mlx.mlx)
 	{
-		while (i-- >= 0)
+		while (i >= 0)
 		{
 			if (game->mlx.textures[i].img)
 				mlx_destroy_image(game->mlx.mlx, game->mlx.textures[i].img);
+			i--;
 		}
 	}
 	if (game->mlx.win)
@@ -63,7 +62,7 @@ int	close_red_cross(t_game *game)
 	if (game->mlx.mlx)
 		free(game->mlx.mlx);
 	free_config(game->config);
-	exit(status);
+	exit(0);
 }
 
 static void	handle_error(t_game *game, char *error, int i)
