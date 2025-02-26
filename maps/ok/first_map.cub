@@ -1,10 +1,10 @@
-NO ./assets/wall.xpm
-SO ./assets/player.xpm
-WE ./assets/collectible.xpm
-EA ./assets/floor.xpm
+NO ./assets/dark.xpm
+SO ./assets/dark_brick.xpm
+WE ./assets/dark_green.xpm
+EA ./assets/dark_grey.xpm
 
-F 0,255,0
-C 0,0,255
+F 220,100,0
+C 225,30,0
 
 
         1111111111111111111111111     1111
